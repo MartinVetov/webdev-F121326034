@@ -1,3 +1,48 @@
+## Tool Description Experiment
+
+### Objective
+
+The purpose of this experiment was to investigate whether changing the description of an MCP tool affects the AI agent's tool selection.
+
+### Experiment 1 — Specific Description
+
+**Tool description:**
+`Find a course lecture by number and return its title and topics.`
+
+**Prompt:**
+`What does lecture 7 cover?`
+
+**Observed tool call:**
+`find_lecture(number: 7)`
+
+**Result:**
+Gemini successfully retrieved lecture 7, "Evaluating output", and returned the correct topics.
+
+### Experiment 2 — Generic Description
+
+**Tool description:**
+`Retrieve course information from local data.`
+
+**Prompt:**
+`What does lecture 7 cover?`
+
+**Observed tool call:**
+`find_lecture(number: 7)`
+
+**Result:**
+Gemini selected the same tool and returned the correct information.
+
+### Analysis and Conclusion
+
+Changing the tool description from specific to generic did not change Gemini's tool selection in the two observed runs.
+
+A possible explanation is that the tool name `find_lecture` and its input schema remained descriptive enough for the model to identify its purpose.
+
+This experiment demonstrates that tool selection is influenced by multiple sources of information, including tool names, descriptions, parameter schemas, and user prompts.
+
+The results are limited to two observations and do not establish that descriptions have no effect in other situations.
+
+
 # Web Development course · your workspace
 
 This repository is your workspace for the whole course: Exercise 1 in `mcp-server/`, and your project (Exercises 2–5) in the rest of it. Everything runs in your browser through GitHub Codespaces, so nothing needs to be installed on your laptop.
