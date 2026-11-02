@@ -40,7 +40,29 @@ It prints one line per check. Fix the failures yourself: the agent may explain a
 <!-- The exact command, so the lecturer can run your server too. -->
 
 ## Session transcript
-<!-- Paste one full session: initialize, the reply, tools/list, one good tools/call, one that fails. -->
-
+@MartinVetov ➜ /workspaces/webdev-F121326034 (main) $ node mcp-server/server.js
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"me","version":"1.0.0"}}}
+{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"lectures","version":"0.1.0"}}}
+{"jsonrpc":"2.0","method":"notifications/initialized"}
+{"jsonrpc":"2.0","id":2,"method":"tools/list"}
+{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"find_lecture","description":"Find a course lecture by number and return its title and topics.","inputSchema":{"type":"object","properties":{"number":{"type":"integer","description":"Lecture number from 1 to 10"}},"required":["number"]}},{"name":"count_lectures","description":"Count the total number of course lectures.","inputSchema":{"type":"object","properties":{}}}]}}
+{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"find_lecture","arguments":{"number":5}}}
+{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"{\"number\":5,\"title\":\"What the agent built, part 1\",\"topics\":\"HTTP, REST vs GraphQL, data modeling, ORM, layers\"}"}],"isError":false}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"find_lecture","arguments":{"number":99}}
+SyntaxError: Expected ',' or '}' after property value in JSON at position 104 (line 1 column 105)
+    at JSON.parse (<anonymous>)
+    at Interface.<anonymous> (/workspaces/webdev-F121326034/mcp-server/server.js:65:26)
+    at Interface.emit (node:events:519:28)
+    at [_onLine] [as _onLine] (node:internal/readline/interface:419:12)
+    at [_normalWrite] [as _normalWrite] (node:internal/readline/interface:613:22)
+    at ReadStream.ondata (node:internal/readline/interface:250:23)
+    at ReadStream.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+{"jsonrpc":"2.0","id":null,"error":{"code":-32700,"message":"Invalid JSON request"}}
+{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"find_lecture","arguments":{"number":99}}}
+{"jsonrpc":"2.0","id":4,"result":{"content":[{"type":"text","text":"Lecture 99 not found"}],"isError":true}}
+^C
 ## The description experiment
 <!-- Three sentences: what you changed in the description, whether the model chose the tool differently, and why you think so. -->
